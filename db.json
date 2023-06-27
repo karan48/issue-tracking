@@ -1,0 +1,10 @@
+{
+  "user": [
+      {
+          "fname": "Samiksha",
+          "lname": "Meshram",
+          "email": "samiksha@gmail.com",
+          "password": "123456"
+      }
+  ] 
+}
