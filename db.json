@@ -1,10 +1,7 @@
 {
-  "user": [
-      {
-          "fname": "Samiksha",
-          "lname": "Meshram",
-          "email": "samiksha@gmail.com",
-          "password": "123456"
-      }
-  ] 
+  "users": [
+    { "id": 1, "name": "John", "email": "jhon@gmail.com", "password": "123456" },
+    { "id": 2, "name": "Alice", "email": "alice@gmail.com", "password": "123456" },
+    { "id": 3, "name": "Bob", "email": "bob@gmail.com", "password": "123456" }
+  ]
 }
