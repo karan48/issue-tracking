@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _authService: AuthService
+    private _authService: AuthService,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,7 @@ export class LoginComponent implements OnInit {
         console.log("Login successfull");
         this.errorMsg = '';
         this._authService.saveLoginuserInfoLocally(res[0]);
+        this._router.navigateByUrl('/landing');
       } else {
         console.log("Login fail");
         this.errorMsg = "Username or Password is wrong";

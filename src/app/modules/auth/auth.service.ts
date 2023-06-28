@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { user } from '../shared/shared.type';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
   constructor(
@@ -16,6 +18,16 @@ export class AuthService {
   }
 
   saveLoginuserInfoLocally(payload: user) {
-    sessionStorage.setItem('user', JSON.stringify(payload));
+    localStorage.setItem('user', JSON.stringify(payload));
   }
+  
+  getLoginUserInfo(): user | null {
+    const user = localStorage.getItem('user');
+    if(user) {
+      return JSON.parse(user);    
+    } else {
+      return null;
+    }
+  }
+
 }
