@@ -4,6 +4,7 @@ import { Observable, startWith, switchMap } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateSprintComponent } from './create-sprint/create-sprint.component';
+import { CreateIssueComponent } from './create-issue/create-issue.component';
 
 @Component({
   selector: 'app-landing',
@@ -40,17 +41,28 @@ export class LandingComponent implements OnInit {
   onSelect(value: any) {
     if(value == 1) {
       this.createSprint();    
+    } else {
+      this.createIssue();
     }
   }
 
   createSprint(): void {
     const dialogRef = this.dialog.open(CreateSprintComponent, {
-      data: {name: 'karan', animal: 'Human'},
+      data: {},
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      
+    });
+  }
+  
+  createIssue(): void {
+    const dialogRef = this.dialog.open(CreateIssueComponent, {
+      data: {},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

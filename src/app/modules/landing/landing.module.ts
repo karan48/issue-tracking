@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CreateIssueComponent } from './create-issue/create-issue.component';
 
 
 
@@ -21,7 +22,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [LandingComponent, CreateSprintComponent],
+  declarations: [LandingComponent, CreateSprintComponent, CreateIssueComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
