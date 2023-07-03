@@ -14,59 +14,24 @@ import { Issue } from '../shared/shared.type';
 })
 export class LandingComponent implements OnInit {
 
-  selectOptions = [
-    {
-      id: 1,
-      name: 'Create New Sprint'
-    },
-    {
-      id: 2,
-      name: 'Create new Issue'
-    }
-  ];
-
   searchControl = new FormControl();
   
-  navigations = ["All sprints", "Issue Graph", "Menu Three", "Menu Four", "Menu Five", "Menu Six"];
-
   issues: Issue[] = [];
 
-  constructor(public dialog: MatDialog, private _sharedService: SharedService) {}
+  appConfig: any;
+
+  constructor(private _sharedService: SharedService) {
+    this.appConfig = this._sharedService.appConfig;
+    this.appConfig.header.hidden = false;
+    this.appConfig.navigation.hidden = false
+    this._sharedService.setAppConfig(this.appConfig)
+  }
 
   ngOnInit(): void {
     this.getIssue();
   }
 
-  onSelect(value: any) {
-    if(value == 1) {
-      this.createSprint();    
-    } else {
-      this.createIssue();
-    }
-  }
-
-  createSprint(): void {
-    const dialogRef = this.dialog.open(CreateSprintComponent, {
-      data: {},
-      disableClose: true
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-  
-  createIssue(): void {
-    const dialogRef = this.dialog.open(CreateIssueComponent, {
-      disableClose: true,
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
+ 
   getIssue() {
     this._sharedService.getIssues().subscribe(res => {
       console.log('issue', res);

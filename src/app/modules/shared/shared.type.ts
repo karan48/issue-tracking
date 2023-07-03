@@ -18,3 +18,12 @@ export interface Issue {
   "sprint": number,
   "id": number
 }
+
+export interface AppConfig {
+  header: {
+      hidden: boolean;
+  };
+  navigation: {
+      hidden: boolean;
+  };
+}

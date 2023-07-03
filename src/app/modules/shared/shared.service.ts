@@ -1,14 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Issue, Sprint } from './shared.type';
+import { AppConfig, Issue, Sprint } from './shared.type';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, map, of, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
+
+  appConfig: AppConfig = {
+    header: {
+      hidden: false
+    },
+    navigation: {
+      hidden: true
+    }
+  }
+
+  appConfig$ = new BehaviorSubject(this.appConfig);
 
   constructor(
     private readonly _http: HttpClient,
@@ -49,6 +60,16 @@ export class SharedService {
   getIssues() {
     return this._http.get<Issue[]>(`${environment.api}issue`);
   }
+
+  setAppConfig(config: AppConfig) {
+   // this.appConfig = config;
+    this.appConfig$.next(this.appConfig);
+  }
+
+  resetConfig() {
+    this.appConfig$.next(this.appConfig);
+  }
+ 
 
 
   
