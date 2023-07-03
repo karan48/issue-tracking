@@ -4,3 +4,17 @@ export interface user {
   email: string;
   password: string;
 }
+
+export interface Sprint {
+  id: number,
+  name: string,
+  startTime: string,
+  endTime: string,
+  active: boolean
+}
+
+export interface Issue {
+  "title": string,
+  "sprint": number,
+  "id": number
+}
