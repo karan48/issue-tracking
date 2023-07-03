@@ -57,6 +57,10 @@ export class SharedService {
     return this._http.post<Issue>(`${environment.api}issue`, payload);
   }
   
+  getSprint() {
+    return this._http.get<Sprint[]>(`${environment.api}sprint`);
+  }
+  
   getIssues() {
     return this._http.get<Issue[]>(`${environment.api}issue`);
   }

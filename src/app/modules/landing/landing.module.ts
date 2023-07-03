@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LandingComponent } from './landing.component';
+import { SprintComponent } from './sprint/sprint.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -17,13 +17,13 @@ import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   {
-    path: '',
-    component: LandingComponent
+    path: 'sprint',
+    component: SprintComponent
   }
 ];
 
 @NgModule({
-  declarations: [LandingComponent, CreateSprintComponent, CreateIssueComponent],
+  declarations: [SprintComponent, CreateSprintComponent, CreateIssueComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

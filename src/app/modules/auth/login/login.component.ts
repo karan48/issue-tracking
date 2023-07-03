@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.errorMsg = '';
         this._authService.saveLoginuserInfoLocally(res[0]);
         this._sharedService.resetConfig()
-        this._router.navigateByUrl('/landing');
+        this._router.navigateByUrl('/sprint');
       } else {
         console.log("Login fail");
         this.errorMsg = "Username or Password is wrong";
