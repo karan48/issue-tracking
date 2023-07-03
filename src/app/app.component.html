@@ -14,13 +14,13 @@
             </div>
         </div>
         <div>
-            <button mat-raised-button>Log out</button>
+            <button mat-raised-button class="hover:text-white" (click)="logOut()">Log out</button>
         </div>
     </div>
 
     <div id="nav-content" class="flex h-full w-full">
         <div *ngIf="appConfig?.navigation.hidden === false" id="app-nav" class="flex flex-col flex-none w-40 bg-blue-100">
-            <div class="nav" *ngFor="let nav of navigations">{{ nav }}</div>
+            <div class="nav" *ngFor="let nav of navigations"  [routerLink]="[nav.link]" routerLinkActive="active-link">{{ nav.name }}</div>
         </div>
         <div class="flex-auto flex flex-col">
             <router-outlet></router-outlet> 

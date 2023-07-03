@@ -4,6 +4,7 @@ import { CreateSprintComponent } from './modules/landing/create-sprint/create-sp
 import { MatDialog } from '@angular/material/dialog';
 import { AppConfig } from './modules/shared/shared.type';
 import { SharedService } from './modules/shared/shared.service';
+import { AuthService } from './modules/auth/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -22,17 +23,19 @@ export class AppComponent {
   ];
 
   navigations = [
-    'All sprints',
-    'Issue Graph',
-    'Menu Three',
-    'Menu Four',
-    'Menu Five',
-    'Menu Six',
+    {
+      name: 'All sprints',
+      link: '/sprint'
+    },
+    {
+      name: 'Issue Graph',
+      link: '/issue'
+    }
   ];
 
   appConfig: any;
 
-  constructor(public dialog: MatDialog, private _sharedService: SharedService) {
+  constructor(public dialog: MatDialog, private _sharedService: SharedService, private _auth: AuthService) {
     this._sharedService.appConfig$.subscribe((res) => {
       this.appConfig = res;    
     });
@@ -68,5 +71,9 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe((result) => {
       console.log('The dialog was closed');
     });
+  }
+
+  logOut() {
+    this._auth.logOut();
   }
 }

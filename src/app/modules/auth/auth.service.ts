@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { user } from '../shared/shared.type';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { user } from '../shared/shared.type';
 export class AuthService {
 
   constructor(
-    private readonly _http: HttpClient
+    private readonly _http: HttpClient,
+    private _router: Router
   ) { }
 
   login(payload: {username: string, password: string}): Observable<user[]> {
@@ -28,6 +30,11 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  logOut() {
+    localStorage.removeItem('user');
+    this._router.navigateByUrl('auth/login');
   }
 
 }

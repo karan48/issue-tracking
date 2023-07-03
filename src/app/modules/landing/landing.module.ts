@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CreateIssueComponent } from './create-issue/create-issue.component';
 import { MatSelectModule } from '@angular/material/select';
+import { IssueComponent } from './issue/issue.component';
 
 
 
@@ -19,11 +20,15 @@ const routes: Routes = [
   {
     path: 'sprint',
     component: SprintComponent
+  },
+  {
+    path: 'issue',
+    component: IssueComponent
   }
 ];
 
 @NgModule({
-  declarations: [SprintComponent, CreateSprintComponent, CreateIssueComponent],
+  declarations: [SprintComponent, CreateSprintComponent, CreateIssueComponent, IssueComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
